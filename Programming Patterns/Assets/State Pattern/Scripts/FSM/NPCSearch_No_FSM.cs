@@ -110,8 +110,6 @@ public class NPCSearch_No_FSM : MonoBehaviour
 
                 if (Physics.Raycast(ray, out RaycastHit hit, pickUpDistance))
                 {
-                    Debug.Log("I hit" + hit.collider.name);
-
                     if (hit.collider.gameObject == critter)
                     {
                         critterTarget = critter;

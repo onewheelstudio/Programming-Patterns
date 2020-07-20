@@ -12,6 +12,7 @@ public class CritterWander : MonoBehaviour
     private float wanderDistance = 15f;
     [SerializeField]
     private GameObject deathPartciles;
+    private static ObjectPool_Advanced objectPool;
 
     // Start is called before the first frame update
     void Start()
@@ -24,6 +25,9 @@ public class CritterWander : MonoBehaviour
             NPCSearch_No_FSM.critters.Add(this.gameObject);
         if (!NPCSearch_ClassBased.critters.Contains(this.gameObject))
             NPCSearch_ClassBased.critters.Add(this.gameObject);
+
+        if (objectPool == null)
+            objectPool = FindObjectOfType<ObjectPool_Advanced>();
     }
 
     // Update is called once per frame
@@ -67,5 +71,6 @@ public class CritterWander : MonoBehaviour
         NPCSearch_No_FSM.critters.Remove(this.gameObject);
         NPCSearch_ClassBased.critters.Remove(this.gameObject);
         this.gameObject.SetActive(false);
+
     }
 }
