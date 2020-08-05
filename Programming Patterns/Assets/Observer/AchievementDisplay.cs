@@ -1,7 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using System;
 using DG.Tweening;
 using UnityEngine.UI;
 
@@ -27,15 +25,15 @@ public class AchievementDisplay : MonoBehaviour
 
     private void OnEnable()
     {
-        CritterDisable.critterKill += ScoreUpdated;
+        CritterDisable.critterKill += UpdateAchievement;
     }
 
     private void OnDisable()
     {
-        CritterDisable.critterKill -= ScoreUpdated;
+        CritterDisable.critterKill -= UpdateAchievement;
     }
 
-    private void ScoreUpdated()
+    private void UpdateAchievement()
     {
         score++;
 
@@ -56,3 +54,5 @@ public class AchievementDisplay : MonoBehaviour
         cg.DOFade(0f, 1f);
     }
 }
+
+

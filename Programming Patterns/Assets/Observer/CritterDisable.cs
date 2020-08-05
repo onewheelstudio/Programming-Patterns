@@ -1,14 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class CritterDisable : MonoBehaviour
 {
-    public delegate void CritterKill();
-    public static CritterKill critterKill;
+    public static event Action critterKill;
 
     private void OnDisable()
     {
         critterKill?.Invoke();
     }
 }
+
+
+
