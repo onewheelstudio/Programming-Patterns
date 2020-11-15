@@ -13,7 +13,6 @@ public class CharacterMoveUndo : MonoBehaviour
     private float verticalOffset = 0.1f;
     private Vector3 startPoint;
     private PathDraw pathDrawer;
-    #endregion
 
     private void Start()
     {
@@ -21,6 +20,7 @@ public class CharacterMoveUndo : MonoBehaviour
         startPoint.y = verticalOffset;
         pathDrawer = this.GetComponent<PathDraw>();
     }
+    #endregion
 
     public void AddCommand(ICommand command)
     {
@@ -59,3 +59,5 @@ public class CharacterMoveUndo : MonoBehaviour
         pathDrawer.UpdateLine(positions);
     }
 }
+
+

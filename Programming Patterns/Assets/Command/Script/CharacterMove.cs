@@ -13,7 +13,6 @@ public class CharacterMove : MonoBehaviour
     private float verticalOffset = 0.1f;
     private Vector3 startPoint;
     private PathDraw pathDrawer;
-    #endregion
 
     private void Start()
     {
@@ -21,6 +20,7 @@ public class CharacterMove : MonoBehaviour
         startPoint.y = verticalOffset;
         pathDrawer = this.GetComponent<PathDraw>();
     }
+    #endregion
 
     public void AddCommand(Move command)
     {
@@ -30,6 +30,8 @@ public class CharacterMove : MonoBehaviour
         commandList.Add(command);
         command.Execute();
         index++;
+
+        UpdateLine();
     }
 
     public void UndoCommand()
@@ -41,6 +43,7 @@ public class CharacterMove : MonoBehaviour
             commandList[index - 1].Undo();
             index--;
         }
+        UpdateLine();
     }
 
     public void RedoCommand()
@@ -48,11 +51,12 @@ public class CharacterMove : MonoBehaviour
         if (commandList.Count == 0)
             return;
 
-        if (index < commandList.Count - 1)
+        if (index < commandList.Count)
         {
             index++;
             commandList[index - 1].Execute();
         }
+        UpdateLine();
     }
 
     public void UpdateLine()
@@ -73,3 +77,6 @@ public class CharacterMove : MonoBehaviour
         pathDrawer.UpdateLine(positions);
     }
 }
+
+
+

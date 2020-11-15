@@ -37,10 +37,13 @@ public class CommandHandler
         if (commandList.Count == 0)
             return;
 
-        if (index < commandList.Count - 1)
+        if (index < commandList.Count)
         {
             index++;
             commandList[index - 1].Execute();
         }
     }
 }
+
+
+
